@@ -1,5 +1,5 @@
 # See https://github.com/accso/docker-pentaho-pdi
-FROM debian:buster-slim
+FROM debian:stretch-slim
 MAINTAINER marcus.rickert@accso.de
 RUN adduser --disabled-login --uid 1000 pentaho
 RUN chown pentaho.pentaho /home/pentaho
@@ -15,7 +15,7 @@ RUN apt-get update \
 	   libxtst6 \
     && mkdir -p /opt \
     && echo "Downloading ${URL}" \
-    && curl -s -o /opt/${FILENAME} -L ${URL} \
+    && curl -k -s -o /opt/${FILENAME} -L ${URL} \
     && cd /opt \
     && unzip ${FILENAME} \
     && rm ${FILENAME}
